@@ -4,7 +4,7 @@
 //
 // `tokio = { version = "1", features = ["full"] }`
 #[cfg(feature = "http3")]
-#[cfg(not(target_arch = "wasm32"))]
+#[cfg(not(all(target_arch = "wasm32", not(target_env = "p2"))))]
 #[tokio::main]
 async fn main() -> Result<(), reqwest::Error> {
     use http::Version;

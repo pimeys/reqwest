@@ -23,7 +23,7 @@ where
 }
 
 // xor-shift
-#[cfg(not(target_arch = "wasm32"))]
+#[cfg(not(all(target_arch = "wasm32", not(target_env = "p2"))))]
 pub(crate) fn fast_random() -> u64 {
     use std::cell::Cell;
     use std::collections::hash_map::RandomState;
